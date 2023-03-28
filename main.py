@@ -19,15 +19,13 @@ def glassfoor(link):
             a=link[:x+3]
             b=link[x+4:]
             break
-#     return a,b
-# a,b=glassfoor("https://www.glassdoor.com/Interview/Susquehanna-International-Group-(SIG)-Assistant-Trader-Interview-Questions-EI_IE24446.0,37_KO38,54_IP3.htm?filter.jobTitleFTS=Assistant+Trader")
-# print(a,b)
     textContent = []
-    for x in range(30,50): #goes thorugh the first 10 pages - NEED to finda way to see how many pages are there
+    for x in range(2,10): #goes thorugh the first 10 pages - NEED to finda way to see how many pages are there
         page_link=str(a)+str(x)+str(b)
         print(page_link)
         page_response = requests.get(page_link,timeout=5)
         page_content = BeautifulSoup(page_response.content, "html.parser")
+        print(page_content)
         paragraphs = page_content.ul.find_next_siblings("ul")
         # print(paragraphs)
         paragraphs = page_content.find_all("span", {"class": "d-inline-block mb-sm"})
@@ -40,26 +38,5 @@ def glassfoor(link):
         # list_number(d,p,level=0,num=False)
     d.save("test.docx")
 
-# a="https://www.glassdoor.com/Interview/MarketAxess-Software-Developer-Interview-Questions-EI_IE11426.0,11_KO12,30.htm"
-# c="https://www.glassdoor.com/Interview/MarketAxess-Software-Developer-Interview-Questions-EI_IE11426.0,11_KO12,30_IP2.htm?filter.jobTitleFTS=Software+Developer"
-# b="https://www.glassdoor.com/Interview/Fast-Enterprises-Implementation-Consultant-Interview-Questions-EI_IE241404.0,16_KO17,42_IP1.htm?filter.jobTitleFTS=Implementation+Consultant&filter.offerAccepted=true&filter.offerDeclined=true"
+glassfoor("https://www.glassdoor.co.in/Interview/IMC-Trading-Graduate-Trader-Interview-Questions-EI_IE278100.0,11_KO12,27_IP2.htm?filter.jobTitleFTS=Graduate+Trader")
 
-
-
-
-
-
-
-# for i in range(0,2):
-#     paragraphs=page_content.find_all("span",{"class":"d-inline-block mb-sm"})[i].text
-#     textContent.append(paragraphs)
-# print(textContent)
-
-# a="https://www.glassdoor.com/Interview/Fast-Enterprises-Implementation-Consultant-Interview-Questions-EI_IE241404.0,16_KO17,42.htm?filter.jobTitleFTS=Implementation+Consultant&filter.offerAccepted=true&filter.offerDeclined=true"
-# b="https://www.glassdoor.com/Interview/Fast-Enterprises-Implementation-Consultant-Interview-Questions-EI_IE241404.0,16_KO17,42_IP2.htm?filter.jobTitleFTS=Implementation+Consultant&filter.offerAccepted=true&filter.offerDeclined=true"
-# https://www.glassdoor.com/Interview/Fast-Enterprises-Implementation-Consultant-Interview-Questions-EI_IE241404.0,16_KO17,42_IP3.htm?filter.jobTitleFTS=Implementation+Consultant&filter.offerAccepted=true&filter.offerDeclined=true
-# A=[]
-# for x in range(0,len(a)):
-#     if a[x]!=b[x]:
-#         A.append(b[x])
-# print("".join(A))
